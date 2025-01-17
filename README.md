@@ -1,6 +1,6 @@
 # Rust Sample Project
 
-This is a sample project using the Rocket framework in Rust to create a simple web server with routes and integration with a search service.
+This is a sample project using the Rocket framework in Rust to create a simple web server with routes and integration with an opensearch instance.
 
 ## Requirements
 
