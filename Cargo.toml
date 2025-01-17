@@ -1,0 +1,21 @@
+[package]
+name = "rust_sample_project"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+path = "src/lib.rs"
+
+[[bin]]
+name = "rust_sample_project"
+path = "src/main.rs"
+
+[dependencies]
+dotenv = "0.15.0" 
+rocket = { version = "0.5.1", features = ["json"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+regex = "1"
+opensearch = "2.3.0"
+tokio = { version = "1", features = ["full"] }
+thiserror = "2.0.11"
