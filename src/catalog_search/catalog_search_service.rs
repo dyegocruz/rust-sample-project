@@ -11,12 +11,12 @@ pub async fn search_term(term: &str, language: Language) -> Result<Vec<CatalogSe
     for catalog in catalog_search_result {
         let mut catalog_search_response = CatalogSearchResponse {
             id: catalog.id,
-            language: language.as_str().to_owned(),
             name: catalog.name,
             catalog_type: catalog.catalog_type,
             release_date: catalog.release_date.unwrap_or_default(),
             popularity: catalog.popularity,
             image_path: catalog.image_path.unwrap_or_default(),
+            language: language.as_str().to_string(),
         };
 
         for location in catalog.locations.iter().flatten() {
