@@ -1,5 +1,7 @@
+use async_graphql::{SimpleObject, Enum};
 use serde::{Deserialize, Serialize};
 use thiserror::Error;
+use rocket::form::FromFormField;
 
 #[derive(Error, Debug)]
 pub enum SearchError {
@@ -37,23 +39,22 @@ pub struct Location {
     #[serde(rename = "posterPath")]
     pub poster_path: Option<String>,
 }
-#[derive(Debug, Deserialize, Serialize)]
+#[derive(Debug, Deserialize, Serialize, SimpleObject)]
 pub struct CatalogSearchResponse {
     pub id: i32,
     pub language: String, // Substitua por um tipo apropriado se você tiver um tipo `Language` definido
     pub name: String,
-    #[serde(rename = "catalogType")]
     pub catalog_type: String,
     pub popularity: f64,
-    #[serde(rename = "imagePath")]
     pub image_path: String,
-    #[serde(rename = "releaseDate")]
-pub release_date: String,
+    pub release_date: String,
 }
 
-#[derive(Debug)]
+#[derive(Enum, Copy, Clone, Eq, PartialEq, Debug, FromFormField)]
 pub enum Language {
+    #[graphql(name = "EN")]
     En,
+    #[graphql(name = "PT_BR")]
     PtBr,
 }
 
